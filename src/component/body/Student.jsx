@@ -5,7 +5,7 @@ const Student = ({ id, name, marks, section }) => {
     const heading = {
         color: 'yellow'
     };
-
+ 
     return (
         <tr>
             <td>{id}</td>

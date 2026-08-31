@@ -1,11 +1,9 @@
-import React from 'react';
-import Body from './component/body/body';
+import React from "react";
+import Registration from "./component/Registration";
 
 const App = () => {
   return (
-    <div>
-      <Body />
-    </div>
+    <Registration />
   );
 };
 
