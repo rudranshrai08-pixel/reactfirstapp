@@ -1,15 +1,15 @@
-import React from 'react';
+import React from 'react'
 
 const Student = (props) => {
+     const {id,name,marks,section}=props;
     return (
-        <div>
-            <h2>Student Details</h2>
-            <p>ID: {props.id}</p>
-            <p>Name: {props.name}</p>
-            <p>Marks: {props.marks}</p>
-            <p>Section: {props.section}</p>
-        </div>
-    );
-};
+      <tr >
+        <td >{id}</td>
+        <td >{name}</td>
+        <td>{marks}</td>
+        <td>{section}</td>
+      </tr>
+  )
+}
 
-export default Student;
+export default Student

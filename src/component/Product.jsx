@@ -1,45 +1,54 @@
-import React from 'react'
-import { useParams } from 'react-router-dom'
+import React, { useState } from "react";
+import { useParams, useSearchParams } from "react-router-dom";
 
 const Product = () => {
-
-    const { id } = useParams()
-
-    let productName
-
-    switch (id) {
-        case "1":
-            productName = "Laptop"
-            break
-
-        case "2":
-            productName = "Mobile"
-            break
-
-        case "3":
-            productName = "Headphones"
-            break
-
-        case "4":
-            productName = "Keyboard"
-            break
-        case "5":
-            productName = "Mouse"
-            break
-        case "6":
-            productName = "Monitor"
-            break
-
-        default:
-            productName = "Product Not Found"
+  // const {pid}=useParams();
+  const [info,setInfo]=useState();
+  const [filter, setFilter] = useSearchParams();
+  const pid = filter.get("pid");
+  const onSearch=(e)=>{
+         e.preventDefault()
+         setFilter({pid:info})
+  }
+  const getProduct = () => {
+    switch (pid) {
+      case "p100": {
+        return (
+          <div>
+            <h2>Production Information</h2>
+            <h2>Product ID:{pid}</h2>
+          </div>
+        );
+      }
+      case "p200": {
+        return (
+          <div>
+            <h2>Production Information for special product</h2>
+            <h2>Product ID:{pid}</h2>
+          </div>
+        );
+      }
+      default: {
+        return (
+          <div>
+            <h2>Production Information is not avilable for PID:{pid}</h2>
+          </div>
+        );
+      }
     }
-
-    return (
-        <div>
-            <h2>Product ID: {id}</h2>
-            <h1>{productName}</h1>
-        </div>
-    )
-}
-
-export default Product
+  };
+  return (
+    <div className="d-flex flex-column justify-content-center">
+      <form className="d-flex" onSubmit={onSearch}>
+        <input 
+        type="text"
+        value={info}
+        onChange={(e)=>setInfo(e.target.value)}
+        />
+        <button className="btn btn-primary">Search PID</button>
+      </form>
+      {getProduct()}
+    </div>
+  );
+};
+export default Product;
