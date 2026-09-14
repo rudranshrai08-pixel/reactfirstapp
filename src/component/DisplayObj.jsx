@@ -11,6 +11,7 @@ const DisplayObj = () => {
       prevStudent.map((row) => ({ ...row, name: "Name" + row.id })),
     );
   };
+
   return (
     <div>
       <h2>List of numbers:</h2>
