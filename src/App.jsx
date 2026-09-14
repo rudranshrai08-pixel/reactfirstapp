@@ -12,6 +12,7 @@ import Offline from "./component/Offline"
 import Online from "./component/Online"
 import Error404 from "./component/Error404"
 import Product from "./component/Product"
+import Home from './component/Home'
 
 const App = () => {
   return (
@@ -20,7 +21,7 @@ const App = () => {
       <Header />
 
       <Routes>
-        <Route path="/" element={<Body />} />
+        <Route path="/" element={<Home />} />
 
         <Route path="/courses" element={<Courses />}>
           <Route index element={<Offline />} />
