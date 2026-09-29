@@ -1,9 +1,6 @@
-
 import React from 'react'
-import Footer from "./component/footer/footer"
-import Header from "./component/header/header"
 import { Route, Routes } from 'react-router-dom'
-import Body from "./component/body/body"
+
 import CounterP from "./component/CounterP"
 import Contact from "./component/Contact"
 import Courses from "./component/Courses"
@@ -12,16 +9,23 @@ import Offline from "./component/Offline"
 import Online from "./component/Online"
 import Error404 from "./component/Error404"
 import Product from "./component/Product"
-import Home from './component/Home'
+import Login from "./component/Login"
+import Dashboard from "./component/Dashboard"
 
 const App = () => {
+
   return (
     <div className="container">
 
-      <Header />
-
       <Routes>
-        <Route path="/" element={<Home />} />
+
+        {/* First page - Login */}
+        <Route path="/" element={<Login />} />
+
+        <Route path="/login" element={<Login />} />
+
+        
+        <Route path="/dashboard" element={<Dashboard />} />
 
         <Route path="/courses" element={<Courses />}>
           <Route index element={<Offline />} />
@@ -41,9 +45,8 @@ const App = () => {
         />
 
         <Route path="*" element={<Error404 />} />
-      </Routes>
 
-      <Footer />
+      </Routes>
 
     </div>
   )
