@@ -1,61 +1,32 @@
 import React, { useEffect, useState } from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css'
+import Card from './fakeapi/Card'
 
 const Home = () => {
 
-  const [recipes, setRecipes] = useState([])
+  const [products, setproducts] = useState([])
 
   useEffect(() => {
-    fetch("https://dummyjson.com/recipes")
+    fetch("https://dummyjson.com/products")
       .then(response => response.json())
-      .then(data => setRecipes(data.recipes))
+      .then(data => setproducts(data.products))
       .catch(error => alert(error.message))
   }, [])
 
   return (
     <div className="container mt-5">
 
-      <h2 className="text-center mb-4">List Of Recipes</h2>
+      <h2 className="text-center mb-4">
+        List Of Products
+      </h2>
 
-      <table className="table table-bordered table-striped table-hover">
+      <div className="row g-4">
 
-        <thead className="table-dark">
-          <tr>
-            <th>ID</th>
-            <th>Name</th>
-            <th>Instructions</th>
-            <th>Ingredients</th>
-            <th>Image</th>
-          </tr>
-        </thead>
+        {products.map((product) => (
+          <Card key={product.id} product={product} />
+        ))}
 
-        <tbody>
-          {recipes.map((row) => (
-            <tr key={row.id}>
-
-              <td>{row.id}</td>
-
-              <td>{row.name}</td>
-
-              <td>{row.instructions}</td>
-
-              <td>
-                {row.ingredients.join(", ")}
-              </td>
-
-              <td>
-                <img
-                  src={row.image}
-                  alt={row.name}
-                  width="100"
-                />
-              </td>
-
-            </tr>
-          ))}
-        </tbody>
-
-      </table>
+      </div>
 
     </div>
   )
